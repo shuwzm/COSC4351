@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="content-section">
+  <form action={% url 'reservation-create' %} method="GET">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Input the reservation info</legend>
+          {{ form|crispy }}
+          {% if tables %}
+          <label for="cars">Choose a table:</label>
+          <select name="table_id" id="table_id">
+          {% for table in tables %}
+            <option value="{{ table.id }}">{{ table.tableId }}</option>
+          {% endfor %}
+          {% endif %}
+          {% if table1 %}
+          <label for="cars">You will reserve two tables {{table1.tableId}} and {{table2.tableId}}</label>
+          <input type='hidden' value="{{table1.id}}" name="table1_id">
+          <input type='hidden' value="{{table2.id}}" name="table2_id">
+          {% endif %}
+         </select>
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Reserve</button>
+        <input class="btn btn-outline-info" type="button" value="Modify Search" onclick="history.back()">
+      </div>
+  </form>
+  {% if tables %}
+  <div class="border-top pt-3">
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Table Name</th>
+            <th scope="col">Seats</th>
+            <th scope="col">isBooth</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for table in tables %}
+              <div class="media-body">   
+                  <tr>
+                    <td>{{ table.tableId }}</td>
+                    <td>{{ table.capacity }}</td>
+                    <td>{{ table.isBooth }}</td>
+                  </tr>
+                </tbody>
+              </div>
+          {% endfor %}
+        </tbody>
+      </table>
+  </div>
+  {% endif %}
+</div>
+
+
+{% endblock content %}

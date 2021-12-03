@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+  {% if reservations.count == 0 %}
+    <div class="border-top pt-3">
+      <small class="text-muted">
+          Would you like to<a class="ml-2" href="{% url 'table-search' %}">Make a reservation</a>?
+      </small>
+    </div>
+  {% else %}
+  <div class="pt-6">
+        This is you reservation list
+   </div>
+    <div class="border-top pt-3">
+      <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Table name</th>
+              <th scope="col">Table 2</th>
+              <th scope="col">Name</th>
+              <th scope="col">Arrive</th>
+            </tr>
+          </thead>
+          <tbody>
+        {% for rev in reservations %}
+            <div class="media-body">   
+                <tr>
+                  <td>{{ rev.table_id }}</td>
+                  <td>{{ rev.table2nd_id }}</td>
+                  <td>{{ rev.first_name }}</td>
+                  <td>{{ rev.come }}</td>
+                  <td><a class="article-title" href="{% url 'reservation-detail' rev.id %}">detail</a>
+                  </td>
+                </tr>
+              </tbody>
+            </div>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    {% endif%}
+
+
+{% else %}
+<div class="border-top pt-3">
+  <small class="text-muted">
+      Would you like to<a class="ml-2" href="{% url 'login' %}">Login in</a>?
+  </small>
+ </div>
+{% endif %}
+
+{% endblock content %}

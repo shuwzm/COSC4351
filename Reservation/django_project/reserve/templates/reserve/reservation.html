@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+  <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Reservation Comfirm</legend>
+          {{ form|crispy }}
+      </fieldset>
+      <div class="form-group">
+          <button class="btn btn-outline-info" type="submit">Comfirm</button>
+          <input type="button" class="btn btn-outline-info" value="Cancel" onclick="history.back()">
+      </div>
+  </form>
+</div>
+{% endblock content %}

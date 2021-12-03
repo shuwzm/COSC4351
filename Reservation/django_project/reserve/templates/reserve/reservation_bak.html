@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+  <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Input the reservation info</legend>
+          {{ form|crispy }}
+          <div class="border-top pt-3">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Talbe ID</th>
+                    <th scope="col">Capacity</th>
+                    <th scope="col">isOutdoor</th>
+                    <th scope="col">isBooth</th>
+                    <th scope="col">available</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for table in tables %}
+                      <div class="media-body">   
+                          <tr>
+                            <td>{{ table.tableId }}</td>
+                            <td>{{ table.capacity }}</td>
+                            <td>{{ table.isOutdoor }}</td>
+                            <td>{{ table.isBooth }}</td>
+                            <td>{{ table.isCurAvailable }}</td>
+                          </tr>
+                          <tr>
+                                <button class="btn" type="submit">Find the table</button>
+                          </tr>
+                        </tbody>
+                      </div>
+ 
+                  {% endfor %}
+                </tbody>
+              </table>
+          </div>
+      </fieldset>
+  </form>
+
+</div>
+
+
+{% endblock content %}

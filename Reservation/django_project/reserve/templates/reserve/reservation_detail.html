@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>This is the reservation detail</h3>
+<p>First name: {{ object.first_name }}</p>
+<p>Last name: {{ object.last_name }}</p>
+<p>phone    : {{ object.phone }}</p>
+<p>Table    : {{ object.table_id }}</p>
+{% if object.table2nd_id %}
+<p>Table2   : {{ object.table2nd_id }}</p>
+{% endif %}
+<p>Arrive time     : {{ object.come }}</p>
+<p>Stay until      : {{ object.out }}</p>
+<p>Number of Customers: {{ object.customer_number }}</p>
+{% if object.user_id == user %}
+<div>
+  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'reservation-cancel' object.id %}">Cancel</a>
+</div>
+{% endif %}
+{% endblock content %}

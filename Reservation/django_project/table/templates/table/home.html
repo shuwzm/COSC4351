@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+
+<html lang="en"><head>
+
+  <meta charset="UTF-8">
+  
+<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+
+
+  <title>CodePen - Seating Chart</title>
+  
+  
+  
+  
+<style>
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300';
+*, *:after, *:before {box-sizing: border-box;}
+
+.row {
+	width: 100%; 
+	text-align: center;
+}
+.column {
+	width: 49.5%; 
+	display: inline-block;
+}
+.column a {
+	width: 25%; 
+	display: inline-block; 
+	text-align: center; 
+	padding: 20px 0; 
+	background: yellow; 
+	margin: 7px 0; 
+	cursor: crosshair;}
+.column a p {
+	display: block; 
+	text-align: center; 
+	transition: ease .35s;
+	opacity: 1;;
+}
+.column a:hover p {
+	opacity: 0;
+}
+.column a span {
+	display: block;
+	text-align: center;
+	transition: ease .35s;
+	opacity: 0;
+}
+.column a:hover span {
+	opacity: 1;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+
+</head>
+
+<body translate="no">
+  <div class="container">
+<div class="row" id="row1">
+	<div class="column c1">	
+		<a><p>{{ tables.0.tableId }}</p><span class="s-name">{{ tables.0.capacity }}</span></a>
+		<a><p>{{ tables.1.tableId }}</p><span class="s-name">{{ tables.1.capacity }}</span></a>
+		<a><p>{{ tables.2.tableId }}</p><span class="s-name">{{ tables.2.capacity }}</span></a>
+		<a><p>{{ tables.3.tableId }}</p><span class="s-name">{{ tables.3.capacity }}</span></a>
+	</div>
+	<div class="column c2">
+		<a><p>{{ tables.4.tableId }}</p><span class="s-name">{{ tables.4.capacity }}</span></a>
+		<a><p>{{ tables.5.tableId }}</p><span class="s-name">{{ tables.5.capacity }}</span></a>
+		<a><p>{{ tables.6.tableId }}</p><span class="s-name">{{ tables.6.capacity }}</span></a>
+		<a><p>{{ tables.7.tableId }}</p><span class="s-name">{{ tables.7.capacity }}</span></a>
+	</div>
+</div>
+	<div class="row" id="row1">
+	<div class="column c1">	
+		<a><p>{{ tables.8.tableId }}</p><span class="s-name">{{ tables.8.capacity }}</span></a>
+		<a><p>{{ tables.9.tableId }}</p><span class="s-name">{{ tables.9.capacity }}</span></a>
+		<a><p>{{ tables.10.tableId }}</p><span class="s-name">{{ tables.10.capacity }}</span></a>
+		<a><p>{{ tables.11.tableId }}</p><span class="s-name">{{ tables.11.capacity }}</span></a>
+	</div>
+	<div class="column c2">
+		<a><p>{{ tables.12.tableId }}</p><span class="s-name">{{ tables.12.capacity }}</span></a>
+		<a><p>{{ tables.13.tableId }}</p><span class="s-name">{{ tables.13.capacity }}</span></a>
+		<a><p>{{ tables.14.tableId }}</p><span class="s-name">{{ tables.14.capacity }}</span></a>
+	</div>
+</div>
+</div>
+</body></html>
+
+{% endblock content %}
